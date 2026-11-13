@@ -6,15 +6,20 @@ class WorkExperienceSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 700;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 0),
+      padding: EdgeInsets.symmetric(
+        horizontal: isMobile ? 20.0 : 40.0,
+        vertical: 0,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Work Experience",
             style: TextStyle(
-              fontSize: 34,
+              fontSize: isMobile ? 26 : 34,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
@@ -23,14 +28,14 @@ class WorkExperienceSection extends StatelessWidget {
           Container(
             width: 60,
             height: 3,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xFF8A3FFC),
               borderRadius: BorderRadius.all(Radius.circular(2)),
             ),
           ),
-          const SizedBox(height: 40),
+          SizedBox(height: isMobile ? 24 : 40),
 
-          WorkExperienceCard(
+          const WorkExperienceCard(
             role: "Software Engineer",
             company: "TeamTweaks Technologies",
             duration: "Dec 2025 – Present",
@@ -41,7 +46,7 @@ class WorkExperienceSection extends StatelessWidget {
                 "Deliver feature enhancements and REST API integrations; contribute to code reviews, debugging and production support.",
           ),
 
-          WorkExperienceCard(
+          const WorkExperienceCard(
             role: "Software Engineer",
             company: "Lentera Technologies Pvt. Ltd",
             duration: "June 2023 – Nov 2025",
