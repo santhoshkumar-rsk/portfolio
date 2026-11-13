@@ -9,7 +9,7 @@ import 'widgets/navbar.dart';
 import 'widgets/hero_section.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,22 +17,62 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         body: SingleChildScrollView(
           controller: scrollController,
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              Navbar(),
-              KeyedSubtree(key: homeKey, child: HeroSection()),
-              KeyedSubtree(key: workKey, child: WorkExperienceSection()),
-              TechStackSection(),
-              Container(
-                width: 890,
-                height: 800,
-                child: Image.asset("assets/png/Skills.png"),
+              const Navbar(),
+              KeyedSubtree(key: homeKey, child: const HeroSection()),
+              _sectionDivider(),
+              KeyedSubtree(key: workKey, child: const WorkExperienceSection()),
+              _sectionDivider(),
+              const TechStackSection(),
+              Center(
+                child: Image.asset(
+                  "assets/png/Skills.png",
+                  width: 890,
+                ),
               ),
-              KeyedSubtree(key: projectKey, child: ProjectSection()),
-              KeyedSubtree(key: contactKey, child: ContactSection()),
+              _sectionDivider(),
+              KeyedSubtree(key: projectKey, child: const ProjectSection()),
+              _sectionDivider(),
+              KeyedSubtree(key: contactKey, child: const ContactSection()),
+              _footer(),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _sectionDivider() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 40),
+      height: 1,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Colors.transparent,
+            Color(0xFF4C2186),
+            Color(0xFF8A3FFC),
+            Color(0xFF4C2186),
+            Colors.transparent,
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _footer() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 40),
+      color: const Color(0xff1A0B2E),
+      child: const Text(
+        "© 2025 Santhoshkumar R · Built with Flutter",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 13,
+          color: Colors.white38,
         ),
       ),
     );

@@ -19,17 +19,38 @@ class WorkExperienceSection extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-
+          const SizedBox(height: 8),
+          Container(
+            width: 60,
+            height: 3,
+            decoration: BoxDecoration(
+              color: Color(0xFF8A3FFC),
+              borderRadius: BorderRadius.all(Radius.circular(2)),
+            ),
+          ),
           const SizedBox(height: 40),
 
           WorkExperienceCard(
-            role: "Flutter Developer",
-            company: "Lentera Technologies Pvt Ltd.",
-            duration: "2023 Jun - Present",
+            role: "Software Engineer",
+            company: "TeamTweaks Technologies",
+            duration: "Dec 2025 – Present",
             description:
-                "Developed and deployed cross-platform mobile apps using Flutter. "
-                "Worked with Firebase,\npayment gateways, SQFlite, GetX, and Bloc. "
-                "Published apps on Play Store and App Store.",
+                "Improve application responsiveness and performance through optimized widget structures and efficient state management. "
+                "Implement Clean Architecture and MVVM patterns to support scalable, maintainable codebases. "
+                "Build responsive mobile and web application interfaces following modern UI/UX practices. "
+                "Deliver feature enhancements and REST API integrations; contribute to code reviews, debugging and production support.",
+          ),
+
+          WorkExperienceCard(
+            role: "Software Engineer",
+            company: "Lentera Technologies Pvt. Ltd",
+            duration: "June 2023 – Nov 2025",
+            description:
+                "Developed and maintained cross-platform Flutter applications for Android and iOS. "
+                "Integrated Firebase Authentication, Firestore and Firebase Cloud Messaging (FCM) push notifications. "
+                "Implemented payment gateway integrations using Razorpay, Stripe and Cashfree. "
+                "Built responsive UI components and worked on application performance optimization. "
+                "Resolved production issues through debugging and bug fixes while collaborating with cross-functional teams.",
           ),
         ],
       ),

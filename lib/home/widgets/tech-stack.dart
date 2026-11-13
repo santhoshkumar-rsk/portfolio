@@ -13,7 +13,6 @@ class _TechStackSectionState extends State<TechStackSection> {
   final ScrollController _scrollController = ScrollController();
   late Timer _timer;
 
-  // Add your tech list here
   final List<Map<String, dynamic>> techList = [
     {"name": "Flutter", "icon": Icons.flutter_dash, "color": Colors.cyanAccent},
     {"name": "Dart", "icon": Icons.code, "color": Colors.blueAccent},
@@ -21,24 +20,25 @@ class _TechStackSectionState extends State<TechStackSection> {
     {"name": "GetX", "icon": Icons.bolt, "color": Colors.yellowAccent},
     {"name": "Firebase", "icon": Icons.local_fire_department, "color": Colors.deepOrange},
     {"name": "SQFlite", "icon": Icons.storage, "color": Colors.greenAccent},
+    {"name": "Razorpay", "icon": Icons.currency_rupee, "color": Colors.lightBlue},
+    {"name": "Stripe", "icon": Icons.payment, "color": Colors.purpleAccent},
+    {"name": "Cashfree", "icon": Icons.account_balance_wallet_outlined, "color": Colors.tealAccent},
+    {"name": "REST APIs", "icon": Icons.cloud_outlined, "color": Colors.blueGrey},
     {"name": "Git", "icon": Icons.merge_type, "color": Colors.deepOrange},
     {"name": "GitHub", "icon": Icons.code_off, "color": Colors.white},
-    {"name": "Stripe", "icon": Icons.payment, "color": Colors.purpleAccent},
-    {"name": "Razorpay", "icon": Icons.currency_rupee, "color": Colors.lightBlue},
-    {"name": "PHP", "icon": Icons.php, "color": Colors.indigoAccent},
+    {"name": "Android", "icon": Icons.android, "color": Colors.lightGreenAccent},
+    {"name": "iOS", "icon": Icons.apple, "color": Colors.white70},
+    {"name": "Web", "icon": Icons.web, "color": Colors.lightBlueAccent},
   ];
 
   @override
   void initState() {
     super.initState();
-
-    // Auto scroll loop
-    _timer = Timer.periodic(const Duration(milliseconds: 30), (_) {
+    _timer = Timer.periodic(const Duration(milliseconds: 25), (_) {
       if (_scrollController.hasClients) {
-        _scrollController.jumpTo(
-          (_scrollController.offset + 1) %
-              (_scrollController.position.maxScrollExtent + 200),
-        );
+        final maxScroll = _scrollController.position.maxScrollExtent;
+        final next = _scrollController.offset + 1;
+        _scrollController.jumpTo(next >= maxScroll ? 0 : next);
       }
     });
   }
@@ -52,7 +52,6 @@ class _TechStackSectionState extends State<TechStackSection> {
 
   @override
   Widget build(BuildContext context) {
-    // Duplicate list to create a seamless infinite loop
     final repeatedList = [...techList, ...techList];
 
     return Padding(
@@ -68,18 +67,27 @@ class _TechStackSectionState extends State<TechStackSection> {
               color: Colors.white,
             ),
           ),
-
-          const SizedBox(height: 30),
+          const SizedBox(height: 8),
+          Container(
+            width: 60,
+            height: 3,
+            decoration: BoxDecoration(
+              color: const Color(0xFF8A3FFC),
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+          const SizedBox(height: 32),
 
           SizedBox(
-            height: 120,
+            height: 110,
             child: ListView.builder(
               controller: _scrollController,
               scrollDirection: Axis.horizontal,
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: repeatedList.length,
               itemBuilder: (context, index) {
                 final item = repeatedList[index];
-                return _roundedTechCard(
+                return _techCard(
                   name: item["name"],
                   icon: item["icon"],
                   color: item["color"],
@@ -92,43 +100,40 @@ class _TechStackSectionState extends State<TechStackSection> {
     );
   }
 
-  // ==================== ROUNDED CIRCLE GLASS CARD ====================
-  Widget _roundedTechCard({
+  Widget _techCard({
     required String name,
     required IconData icon,
     required Color color,
   }) {
     return Container(
-      margin: const EdgeInsets.only(right: 80),
+      margin: const EdgeInsets.only(right: 60),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          // Circle Glass Icon
           Container(
-            padding: const EdgeInsets.all(18),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.white.withOpacity(0.06),
-              border: Border.all(color: Colors.white.withOpacity(0.20)),
+              color: Colors.white.withValues(alpha: 0.06),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(999),
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                child: Icon(icon, color: color, size: 32),
+                child: Icon(icon, color: color, size: 28),
               ),
             ),
           ),
-
           const SizedBox(height: 10),
-
           Text(
             name,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
             ),
-          )
+          ),
         ],
       ),
     );

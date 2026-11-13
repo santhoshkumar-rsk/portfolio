@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class ProjectCard extends StatefulWidget {
   final String title;
+  final String subtitle;
   final String description;
   final List<String> tech;
   final VoidCallback? onTap;
@@ -10,6 +11,7 @@ class ProjectCard extends StatefulWidget {
   const ProjectCard({
     super.key,
     required this.title,
+    required this.subtitle,
     required this.description,
     required this.tech,
     this.onTap,
@@ -37,11 +39,11 @@ class _ProjectCardState extends State<ProjectCard> {
 
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.white.withOpacity(0.06),
+          color: Colors.white.withValues(alpha: _hover ? 0.09 : 0.06),
           border: Border.all(
-            color: Colors.white.withOpacity(0.15),
+            color: Colors.white.withValues(alpha: _hover ? 0.25 : 0.15),
             width: 1.4,
-          ),         
+          ),
         ),
 
         child: ClipRRect(
@@ -67,15 +69,27 @@ class _ProjectCardState extends State<ProjectCard> {
                     ),
                   ),
 
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 4),
+
+                  // SUBTITLE
+                  Text(
+                    widget.subtitle,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0xFFB56CFF).withValues(alpha: 0.9),
+                    ),
+                  ),
+
+                  const SizedBox(height: 12),
 
                   // DESCRIPTION
                   Text(
                     widget.description,
                     style: TextStyle(
-                      height: 1.5,
+                      height: 1.6,
                       fontSize: 15,
-                      color: Colors.white.withOpacity(0.75),
+                      color: Colors.white.withValues(alpha: 0.75),
                     ),
                   ),
 
@@ -87,20 +101,20 @@ class _ProjectCardState extends State<ProjectCard> {
                     runSpacing: 8,
                     children: widget.tech.map((t) {
                       return Container(
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 6),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: Colors.white.withOpacity(0.08),
+                          color: Colors.white.withValues(alpha: 0.08),
                           border: Border.all(
-                            color: Colors.white.withOpacity(0.2),
+                            color: Colors.white.withValues(alpha: 0.2),
                           ),
                         ),
                         child: Text(
                           t,
                           style: TextStyle(
                             fontSize: 13,
-                            color: Colors.white.withOpacity(0.9),
+                            color: Colors.white.withValues(alpha: 0.9),
                           ),
                         ),
                       );

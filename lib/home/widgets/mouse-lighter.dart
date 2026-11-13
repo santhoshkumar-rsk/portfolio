@@ -47,18 +47,19 @@ class _LightPainter extends CustomPainter {
     final Paint paint = Paint()
       ..shader = RadialGradient(
         colors: [
-          Colors.white.withOpacity(0.25),  // center brightness
-          Colors.purple.withOpacity(0.20),
+          Colors.white.withValues(alpha: 0.08),
+          Colors.purple.withValues(alpha: 0.06),
           Colors.transparent,
         ],
         stops: const [0.0, 0.3, 1.0],
       ).createShader(
-        Rect.fromCircle(center: mousePosition, radius: 200),
+        Rect.fromCircle(center: mousePosition, radius: 250),
       );
 
-    canvas.drawCircle(mousePosition, 200, paint);
+    canvas.drawCircle(mousePosition, 250, paint);
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant _LightPainter oldDelegate) =>
+      oldDelegate.mousePosition != mousePosition;
 }

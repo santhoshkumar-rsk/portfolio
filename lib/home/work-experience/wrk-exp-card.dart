@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class WorkExperienceCard extends StatefulWidget {
@@ -40,11 +39,11 @@ class _WorkExperienceCardState extends State<WorkExperienceCard> {
             colors: [
               Color(0xff2D1949),
               Color(0xff361761),
-              // deep purple
             ],
           ),
-
-          border: Border(top: BorderSide(color: Color(0xff4C2186),width: 5)),
+          border: const Border(
+            top: BorderSide(color: Color(0xff4C2186), width: 5),
+          ),
         ),
 
         child: Row(
@@ -52,7 +51,7 @@ class _WorkExperienceCardState extends State<WorkExperienceCard> {
             Container(
               width: 120,
               height: 115,
-              margin: EdgeInsets.only(right: 24, left: 40),
+              margin: const EdgeInsets.only(right: 24, left: 40),
               child: Image.asset("assets/png/work-exp.png"),
             ),
             Expanded(
@@ -72,9 +71,9 @@ class _WorkExperienceCardState extends State<WorkExperienceCard> {
 
                   Text(
                     widget.company,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
-                      color: const Color.fromARGB(255, 111, 9, 236).withOpacity(0.9),
+                      color: Color(0xFFB56CFF),
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -85,7 +84,7 @@ class _WorkExperienceCardState extends State<WorkExperienceCard> {
                     widget.duration,
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.white.withValues(alpha: _isHovered ? 1.0 : 0.7),
                     ),
                   ),
 
@@ -95,8 +94,8 @@ class _WorkExperienceCardState extends State<WorkExperienceCard> {
                     widget.description,
                     style: TextStyle(
                       fontSize: 15,
-                      height: 1.5,
-                      color: Colors.white.withOpacity(0.85),
+                      height: 1.6,
+                      color: Colors.white.withValues(alpha: 0.85),
                     ),
                   ),
                 ],

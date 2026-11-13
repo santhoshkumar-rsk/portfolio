@@ -19,35 +19,69 @@ class ProjectSection extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-
+          const SizedBox(height: 8),
+          Container(
+            width: 60,
+            height: 3,
+            decoration: BoxDecoration(
+              color: Color(0xFF8A3FFC),
+              borderRadius: BorderRadius.all(Radius.circular(2)),
+            ),
+          ),
           const SizedBox(height: 40),
 
-          // PROJECT 1
+          // PROJECT 1 – Clean N Drive
+          ProjectCard(
+            title: "Clean N Drive",
+            subtitle: "Car & Bike Cleaning Service Applications",
+            description:
+                "Developed two applications end to end: a customer-facing User App and an Employee App. "
+                "Integrated Razorpay payments in the User App to support secure checkout for vehicle cleaning services. "
+                "Implemented SQFlite storage to support offline access for selected Employee App workflows.",
+            tech: ["Flutter", "Dart", "Razorpay", "SQFlite", "Android", "iOS"],
+          ),
+
+          // PROJECT 2 – Qure Ortho
+          ProjectCard(
+            title: "Qure Ortho",
+            subtitle: "Healthcare Management Application",
+            description:
+                "Developed appointment booking and patient management features with role-based modules for Receptionists, "
+                "Doctors and Secretaries. Built an interactive SVG-based human body tracking interface to support patient condition monitoring. "
+                "Implemented workflows for patient vitals history, consultations and diagnoses.",
+            tech: ["Flutter", "Firebase", "SVG", "Role-Based Access", "Android", "iOS"],
+          ),
+
+          // PROJECT 3 – Mawalog
           ProjectCard(
             title: "Mawalog",
+            subtitle: "Manufacturing, Warehouse & Logistics Management",
             description:
-                "Developed a comprehensive mobile and web suite to optimize manufacturing, warehouse, and logistics "
-                "operations with real-time tracking, route optimization, and analytics dashboards. Implemented automation,"
-                "role-based access, and cross-department coordination to enhance efficiency, accuracy, and decision-making",
-            tech: ["Flutter", "Firebase", "GetX", "iOS", "Windows", "Web"],
+                "Contributed to a 16-application suite supporting manufacturing, warehouse and logistics operations. "
+                "Developed and maintained features across 4 applications within the suite, covering real-time tracking, "
+                "route optimization, analytics dashboards and cross-department coordination.",
+            tech: ["Flutter", "Dart", "Firebase", "MVC", "Android", "iOS", "Web"],
           ),
 
-          // PROJECT 2
+          // PROJECT 4 – 1 Minute Click
           ProjectCard(
-            title: "1 minute click",
+            title: "1 Minute Click",
+            subtitle: "Video Engagement & Referral Platform",
             description:
-                "Developed a cross-platform mobile and web application enabling users to earn through video engagement"
-                "and referrals, with integrated Firebase for real-time data and secure payment processing. Built an admin web"
-                "panel for managing users, content, and transactions efficiently.",
-            tech: ["Flutter", "Firebase", "GetX", "Web", "Stripe", "Cashfree"],
+                "Built a cross-platform mobile and web application where users engage with videos and referrals. "
+                "Integrated Firebase for authentication and real-time data; worked on payment and transaction handling. "
+                "Developed an admin web panel for managing users, content and transactions.",
+            tech: ["Flutter", "Firebase", "Firestore", "REST APIs", "Stripe", "Cashfree", "Web"],
           ),
 
-          // PROJECT 3
+          // PROJECT 5 – Ticketzee
           ProjectCard(
-            title: "Ticketzee (Mobile)  ",
+            title: "Ticketzee",
+            subtitle: "Event Booking Application",
             description:
-                "Revamped the UI/UX design of Ticketzee, enhancing the user experience for browsing and booking cultural events and concerts. Focused on creating a modern, intuitive dark-themed interface while maintaining usability and accessibility across devices. Introduced streamlined navigation and improved visual hierarchy to simplify the event discovery and booking process. Collaborated closely with developers and stakeholders",
-            tech: ["Flutter", "SQLite", "iOS", "RazorPay", "Firebase","GetX"],
+                "Revamped mobile and web UI/UX with modern, dark-themed responsive interfaces. "
+                "Improved navigation and visual hierarchy across event discovery and booking experiences.",
+            tech: ["Flutter", "Firebase", "Responsive UI", "Android", "iOS", "Web"],
           ),
         ],
       ),
