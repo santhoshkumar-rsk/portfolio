@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:portfolio/home/home_page.dart';
 import 'theme/app_theme.dart';
 
@@ -11,10 +12,17 @@ class PortfolioApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.darkTheme,
-      home: HomePage(),
+    return ScreenUtilPlusInit(
+      designSize: const Size(1440, 900),
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Santhoshkumar R — Flutter Developer',
+          theme: AppTheme.darkTheme,
+          home: child,
+        );
+      },
+      child: const HomePage(),
     );
   }
 }

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/core/theme/app_colors.dart';
 
 class AppTheme {
+  AppTheme._();
+
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: const Color(0xFF0A021A),
+    scaffoldBackgroundColor: AppColors.background,
     useMaterial3: true,
-
     fontFamily: GoogleFonts.lexendDeca().fontFamily,
-
     colorScheme: const ColorScheme.dark(
-      primary: Color(0xFF8A3FFC),
-      secondary: Color(0xFFB56CFF),
-      surface: Color(0xFF14082B),
+      primary: AppColors.primary,
+      secondary: AppColors.secondary,
+      surface: AppColors.surfaceDark,
     ),
   );
 }
