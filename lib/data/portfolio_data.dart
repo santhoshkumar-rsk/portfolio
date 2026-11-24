@@ -185,7 +185,7 @@ class PortfolioData {
     ),
   ];
 
-  // Featured Projects
+  // Featured Projects with Store Links
   static const List<ProjectEntity> projects = [
     ProjectEntity(
       id: "clean-n-drive",
@@ -202,22 +202,25 @@ class PortfolioData {
       ],
       technologies: ["Flutter", "Dart", "Razorpay", "SQFlite", "Android", "iOS"],
       iconAsset: "assets/png/work-exp.png",
+      appStoreUrl: "https://apps.apple.com/us/app/clean-n-drive/id6736561110",
     ),
     ProjectEntity(
-      id: "qure-ortho",
-      title: "Qure Ortho",
-      category: "Healthcare SaaS",
-      badge: "Interactive SVG Body Tracker",
+      id: "ticketzee",
+      title: "Ticketzee",
+      category: "Event Booking & Discovery",
+      badge: "Modern Dark UI/UX Revamp",
       description:
-          "Comprehensive healthcare management application providing role-based modules for Receptionists, Doctors, and Secretaries, paired with interactive patient diagnosis tracking.",
+          "Revamped event booking application featuring modern dark-themed responsive interfaces, streamlined discovery, and quick seat reservation workflows.",
       highlights: [
-        "Developed appointment booking and patient management workflows with strict role-based access control.",
-        "Built an interactive SVG-based human body tracking interface to monitor and record patient conditions.",
-        "Implemented workflows for patient vitals history, digital consultations, and prescription diagnoses.",
-        "Optimized patient records rendering and report generation for clinic operations.",
+        "Redesigned mobile and web UI/UX with modern, dark-themed responsive glassmorphism interfaces.",
+        "Improved navigation flow and visual hierarchy across event discovery and ticket checkout.",
+        "Integrated interactive event maps, category filters, and immediate ticket confirmation.",
+        "Collaborated with cross-functional stakeholders to elevate user retention and conversion rates.",
       ],
-      technologies: ["Flutter", "Firebase", "SVG", "Role-Based Access", "Android", "iOS"],
+      technologies: ["Flutter", "Firebase", "Responsive UI", "Android", "iOS", "Web"],
       iconAsset: "assets/png/work-exp.png",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.ticketzee.app",
+      appStoreUrl: "https://apps.apple.com/app/ticketzee/id6471960572",
     ),
     ProjectEntity(
       id: "mawalog",
@@ -234,6 +237,25 @@ class PortfolioData {
       ],
       technologies: ["Flutter", "Dart", "Firebase", "MVC", "Android", "iOS", "Web"],
       iconAsset: "assets/png/work-exp.png",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.mawalog.transport",
+      appStoreUrl: "https://apps.apple.com/app/mawalog-mai/id6742718134",
+    ),
+    ProjectEntity(
+      id: "qure-ortho",
+      title: "Qure Ortho",
+      category: "Healthcare SaaS",
+      badge: "Interactive SVG Body Tracker",
+      description:
+          "Comprehensive healthcare management application providing role-based modules for Receptionists, Doctors, and Secretaries, paired with interactive patient diagnosis tracking.",
+      highlights: [
+        "Developed appointment booking and patient management workflows with strict role-based access control.",
+        "Built an interactive SVG-based human body tracking interface to monitor and record patient conditions.",
+        "Implemented workflows for patient vitals history, digital consultations, and prescription diagnoses.",
+        "Optimized patient records rendering and report generation for clinic operations.",
+      ],
+      technologies: ["Flutter", "Firebase", "SVG", "Role-Based Access", "Android", "iOS"],
+      iconAsset: "assets/png/work-exp.png",
+      appStoreUrl: "https://apps.apple.com/app/qure-doc/id6502326759",
     ),
     ProjectEntity(
       id: "1-minute-click",
@@ -249,22 +271,6 @@ class PortfolioData {
         "Developed an admin web panel for managing users, video content, and payout transactions.",
       ],
       technologies: ["Flutter", "Firebase", "Firestore", "REST APIs", "Stripe", "Cashfree", "Web"],
-      iconAsset: "assets/png/work-exp.png",
-    ),
-    ProjectEntity(
-      id: "ticketzee",
-      title: "Ticketzee",
-      category: "Event Booking & Discovery",
-      badge: "Modern Dark UI/UX Revamp",
-      description:
-          "Revamped event booking application featuring modern dark-themed responsive interfaces, streamlined discovery, and quick seat reservation workflows.",
-      highlights: [
-        "Redesigned mobile and web UI/UX with modern, dark-themed responsive glassmorphism interfaces.",
-        "Improved navigation flow and visual hierarchy across event discovery and ticket checkout.",
-        "Integrated interactive event maps, category filters, and immediate ticket confirmation.",
-        "Collaborated with cross-functional stakeholders to elevate user retention and conversion rates.",
-      ],
-      technologies: ["Flutter", "Firebase", "Responsive UI", "Android", "iOS", "Web"],
       iconAsset: "assets/png/work-exp.png",
     ),
   ];

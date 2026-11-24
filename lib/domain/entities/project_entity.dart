@@ -7,7 +7,9 @@ class ProjectEntity {
   final List<String> highlights;
   final List<String> technologies;
   final String? iconAsset;
-  final String? projectUrl;
+  final String? playStoreUrl;
+  final String? appStoreUrl;
+  final String? webUrl;
 
   const ProjectEntity({
     required this.id,
@@ -18,6 +20,8 @@ class ProjectEntity {
     required this.highlights,
     required this.technologies,
     this.iconAsset,
-    this.projectUrl,
+    this.playStoreUrl,
+    this.appStoreUrl,
+    this.webUrl,
   });
 }

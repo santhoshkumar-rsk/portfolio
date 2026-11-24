@@ -5,6 +5,7 @@ import 'package:portfolio/core/theme/app_colors.dart';
 import 'package:portfolio/data/portfolio_data.dart';
 import 'package:portfolio/domain/entities/project_entity.dart';
 import 'package:portfolio/home/widgets/section_header.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectsSection extends StatelessWidget {
   const ProjectsSection({super.key});
@@ -58,60 +59,25 @@ class ProjectsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Badges Row
-          Wrap(
-            spacing: 10,
-            runSpacing: 8,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-                decoration: BoxDecoration(
-                  color: AppColors.primary.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: AppColors.secondary.withValues(alpha: 0.4),
-                  ),
-                ),
-                child: Text(
-                  project.category,
-                  style: GoogleFonts.lexendDeca(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.secondary,
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-                decoration: BoxDecoration(
-                  color: AppColors.accentCyan.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: AppColors.accentCyan.withValues(alpha: 0.35),
-                  ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
+          // Top Badges & Store Links Row
+          isMobile
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(
-                      Icons.star_rounded,
-                      size: 14,
-                      color: AppColors.accentCyan,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      project.badge,
-                      style: GoogleFonts.lexendDeca(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.accentCyan,
-                      ),
-                    ),
+                    _buildCategoryBadges(project),
+                    if (_hasStoreLinks(project)) ...[
+                      const SizedBox(height: 14),
+                      _buildStoreButtons(project),
+                    ],
+                  ],
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildCategoryBadges(project),
+                    if (_hasStoreLinks(project)) _buildStoreButtons(project),
                   ],
                 ),
-              ),
-            ],
-          ),
 
           const SizedBox(height: 16),
 
@@ -231,6 +197,146 @@ class ProjectsSection extends StatelessWidget {
             }).toList(),
           ),
         ],
+      ),
+    );
+  }
+
+  bool _hasStoreLinks(ProjectEntity project) {
+    return project.playStoreUrl != null || project.appStoreUrl != null || project.webUrl != null;
+  }
+
+  Widget _buildCategoryBadges(ProjectEntity project) {
+    return Wrap(
+      spacing: 10,
+      runSpacing: 8,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+          decoration: BoxDecoration(
+            color: AppColors.primary.withValues(alpha: 0.2),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: AppColors.secondary.withValues(alpha: 0.4),
+            ),
+          ),
+          child: Text(
+            project.category,
+            style: GoogleFonts.lexendDeca(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: AppColors.secondary,
+            ),
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+          decoration: BoxDecoration(
+            color: AppColors.accentCyan.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: AppColors.accentCyan.withValues(alpha: 0.35),
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(
+                Icons.star_rounded,
+                size: 14,
+                color: AppColors.accentCyan,
+              ),
+              const SizedBox(width: 4),
+              Text(
+                project.badge,
+                style: GoogleFonts.lexendDeca(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.accentCyan,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildStoreButtons(ProjectEntity project) {
+    return Wrap(
+      spacing: 10,
+      runSpacing: 8,
+      children: [
+        if (project.playStoreUrl != null)
+          _buildStoreChip(
+            label: "Google Play",
+            icon: Icons.shop_two_rounded,
+            color: const Color(0xFF00E676),
+            url: project.playStoreUrl!,
+          ),
+        if (project.appStoreUrl != null)
+          _buildStoreChip(
+            label: "App Store",
+            icon: Icons.apple_rounded,
+            color: Colors.white,
+            url: project.appStoreUrl!,
+          ),
+        if (project.webUrl != null)
+          _buildStoreChip(
+            label: "Live Web",
+            icon: Icons.language_rounded,
+            color: AppColors.accentCyan,
+            url: project.webUrl!,
+          ),
+      ],
+    );
+  }
+
+  Widget _buildStoreChip({
+    required String label,
+    required IconData icon,
+    required Color color,
+    required String url,
+  }) {
+    return InkWell(
+      onTap: () => launchUrl(Uri.parse(url)),
+      hoverColor: Colors.transparent,
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: AppColors.surfaceLight.withValues(alpha: 0.6),
+          border: Border.all(
+            color: color.withValues(alpha: 0.4),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: color.withValues(alpha: 0.15),
+              blurRadius: 8,
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 16, color: color),
+            const SizedBox(width: 6),
+            Text(
+              label,
+              style: GoogleFonts.lexendDeca(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(width: 4),
+            const Icon(
+              Icons.arrow_outward_rounded,
+              size: 13,
+              color: AppColors.textMuted,
+            ),
+          ],
+        ),
       ),
     );
   }
