@@ -185,7 +185,7 @@ class PortfolioData {
     ),
   ];
 
-  // Featured Projects with Store Links
+  // Featured Projects with Exact Store Links
   static const List<ProjectEntity> projects = [
     ProjectEntity(
       id: "clean-n-drive",
@@ -202,7 +202,8 @@ class PortfolioData {
       ],
       technologies: ["Flutter", "Dart", "Razorpay", "SQFlite", "Android", "iOS"],
       iconAsset: "assets/png/work-exp.png",
-      appStoreUrl: "https://apps.apple.com/us/app/clean-n-drive/id6736561110",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.clean.drive&pcampaignid=web_share",
+      appStoreUrl: "https://apps.apple.com/us/app/clean-n-drive/id6818105771",
     ),
     ProjectEntity(
       id: "ticketzee",
@@ -219,8 +220,8 @@ class PortfolioData {
       ],
       technologies: ["Flutter", "Firebase", "Responsive UI", "Android", "iOS", "Web"],
       iconAsset: "assets/png/work-exp.png",
-      playStoreUrl: "https://play.google.com/store/apps/details?id=com.ticketzee.app",
-      appStoreUrl: "https://apps.apple.com/app/ticketzee/id6471960572",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.lentera.ticketzee&pcampaignid=web_share",
+      appStoreUrl: "https://apps.apple.com/us/app/ticketzee/id6743083333",
     ),
     ProjectEntity(
       id: "mawalog",
@@ -237,8 +238,6 @@ class PortfolioData {
       ],
       technologies: ["Flutter", "Dart", "Firebase", "MVC", "Android", "iOS", "Web"],
       iconAsset: "assets/png/work-exp.png",
-      playStoreUrl: "https://play.google.com/store/apps/details?id=com.mawalog.transport",
-      appStoreUrl: "https://apps.apple.com/app/mawalog-mai/id6742718134",
     ),
     ProjectEntity(
       id: "qure-ortho",
@@ -255,7 +254,6 @@ class PortfolioData {
       ],
       technologies: ["Flutter", "Firebase", "SVG", "Role-Based Access", "Android", "iOS"],
       iconAsset: "assets/png/work-exp.png",
-      appStoreUrl: "https://apps.apple.com/app/qure-doc/id6502326759",
     ),
     ProjectEntity(
       id: "1-minute-click",
